@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mmt.web.sample.sms.mapper.TJsonTestMapper">
+
+    <resultMap id="common" type="com.mmt.web.sample.sms.entity.TJsonTest">
+        <result property="id" column="id"></result>
+        <result property="version" column="version"></result>
+        <result property="creation" column="creation"></result>
+        <result property="lastModified" column="last_modified"></result>
+        <result property="jsonContent" column="json_content" jdbcType="OTHER" typeHandler="com.mmt.web.sample.sms.mybatis.th.JsonContnetTypeHandler"></result>
+    </resultMap>
+    
+    <insert id="insert">
+        insert into t_json_test
+        (id,version,creation,last_modified,json_content)
+        values
+        (#{id},#{version},#{creation},#{lastModified},#{jsonContent,jdbcType=OTHER, typeHandler=com.mmt.web.sample.sms.mybatis.th.JsonContnetTypeHandler})
+    </insert>
+
+    <select id="get" resultMap="common">
+        select id,version,creation,last_modified,json_content
+        from t_json_test
+        where id=#{id}
+    </select>
+</mapper>

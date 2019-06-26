@@ -24,3 +24,4 @@
 ##总结
 * rest接口响应该统一结构体
 * 使用mybatisplus工具可以快速开发，避免编写大量的单表增查改sql
+* 类型转换，如单表中存在json字段，可以使用typehandler处理

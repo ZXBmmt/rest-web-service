@@ -25,7 +25,9 @@ public class SqlInterceptor extends AbstractSqlParserHandler implements Intercep
      * 更新时间
      */
     private static final String UPDATE_TIME = "lastModified";
-
+    /**
+     * 版本
+     */
     private static final String VERSION = "version";
 
     @Override
