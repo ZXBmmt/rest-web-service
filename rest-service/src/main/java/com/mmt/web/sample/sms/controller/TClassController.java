@@ -3,10 +3,13 @@ package com.mmt.web.sample.sms.controller;
 
 import com.mmt.client.form.ClassForm;
 import com.mmt.client.vo.ClassVo;
+import com.mmt.common.model.PageRestResponse;
 import com.mmt.common.model.RestResponse;
 import com.mmt.web.sample.sms.service.impl.TClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -34,5 +37,12 @@ public class TClassController {
     @GetMapping("/classes/{id}")
     public RestResponse<ClassVo> get(@PathVariable Long id){
        return classService.get(id);
+    }
+
+    @GetMapping("/classes")
+    public PageRestResponse<List<ClassVo>> query(@RequestParam(name = "currentPage",defaultValue ="1")Long currentPage,
+                                                 @RequestParam(name = "size",defaultValue ="10")Long size,
+                                                 @RequestParam(name = "name",defaultValue ="")String nameKey){
+        return classService.query(currentPage,size,nameKey);
     }
 }
